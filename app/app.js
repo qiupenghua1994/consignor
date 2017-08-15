@@ -243,6 +243,11 @@
                 templateUrl:'manage/entering/view/main.html',
                 controller:'EnteringController'
             })
+            .state('entering_tail',{
+                url:'/entering_tail',
+                templateUrl:'manage/entering/view/tail.html',
+                controller:'EnteringController'
+            })
     })
 
 
