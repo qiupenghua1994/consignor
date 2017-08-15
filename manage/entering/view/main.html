@@ -1,0 +1,194 @@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">一般支付指令单笔录入：</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <span>指令类型：一般支付</span>
+                &nbsp;&nbsp;&nbsp;
+                <label><input name="type" value="1" type="radio" ng-model="data.type"><span>人工录入</span></label>
+                <label><input name="type" value="2" type="radio" ng-model="data.type"><span>上传指令</span></label>
+                <label ng-if="data.type==2"><input name="type" value="2" type="checkbox"><span>需要审批</span></label>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-sm btn-default">提交</button>
+            </div>
+
+        </div>
+    <div ng-if="data.type==1">
+        <div class="col-sm-12 content-border">
+            <div class="col-sm-2">付款人信息：</div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-3 content-name">付款帐号：</div>
+                    <div class="col-sm-7 content-detail">
+                        <select class="form-control input-sm">
+                            <option>321546548</option>
+                        </select>
+                    </div>
+                    <div class="content-detail">
+                        <button class="btn btn-sm btn-default">选择帐号</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 content-name">账户余额：</div>
+                    <div class="col-sm-7 content-detail">
+                        <input class="form-control  input-sm" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 content-name">账户名称：</div>
+                    <div class="col-sm-7 content-detail">
+                        <input class="form-control  input-sm" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 content-name">项目名称：</div>
+                    <div class="col-sm-7 content-detail">
+                        <input class="form-control  input-sm" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 content-border">
+            <div class="col-sm-2">收款人信息：</div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-3 content-name">收款人帐号：</div>
+                    <div class="col-sm-7 content-detail">
+                        <select class="form-control input-sm">
+                            <option>321546548</option>
+                        </select>
+                    </div>
+                    <div class="content-detail">
+                        <button class="btn btn-sm btn-default">查询收款人</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 content-name">收款人名称：</div>
+                    <div class="col-sm-7 content-detail">
+                        <input class="form-control  input-sm" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 content-name">收款人开户行：</div>
+                    <div class="col-sm-7 content-detail">
+                        <input class="form-control  input-sm">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 content-name"></div>
+                    <div class="col-sm-7 content-detail">
+                        <input type="checkbox">加入我的收款人名册
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 content-border">
+            <div class="col-sm-2">指令内容：</div>
+            <div class="col-sm-8">
+
+                <div class="row">
+                    <div class="col-sm-3 content-name">转账金额：</div>
+                    <div class="col-sm-7 content-detail">
+                        <input class="form-control  input-sm">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 content-name">大写金额：</div>
+                    <div class="col-sm-7 content-detail">
+                        <input class="form-control  input-sm">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 content-name">对应期数：</div>
+                    <div class="col-sm-7 content-detail">
+                        <input class="form-control  input-sm">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 content-name">划款事由：</div>
+                    <div class="col-sm-7 content-detail">
+                        <select class="form-control input-sm">
+                            <option>321546548</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 content-name">指令附件：</div>
+                    <div class="col-sm-7 content-detail">
+                        <input class="form-control  input-sm" readonly>
+                    </div>
+                    <div class="content-detail">
+                        <button class="btn btn-sm btn-default">附件上传</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div ng-if="data.type==2">
+            <div class="col-sm-12 content-border">
+                <div class="col-sm-2">付款人信息：</div>
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-3 content-name">付款帐号：</div>
+                        <div class="col-sm-7 content-detail">
+                            <select class="form-control input-sm">
+                                <option>321546548</option>
+                            </select>
+                        </div>
+                        <div class="content-detail">
+                            <button class="btn btn-sm btn-default">选择帐号</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 content-name">账户余额：</div>
+                        <div class="col-sm-7 content-detail">
+                            <input class="form-control  input-sm" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 content-name">账户名称：</div>
+                        <div class="col-sm-7 content-detail">
+                            <input class="form-control  input-sm" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 content-name">项目名称：</div>
+                        <div class="col-sm-7 content-detail">
+                            <input class="form-control  input-sm" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 content-border">
+                <div class="col-sm-2">指令内容：</div>
+                <div class="col-sm-8">
+
+                    <div class="row">
+                        <div class="col-sm-3 content-name">指令文件：</div>
+                        <div class="col-sm-7 content-detail">
+                            <input class="form-control  input-sm" readonly>
+                        </div>
+                        <div class="content-detail">
+                            <button class="btn btn-sm btn-default">指令上传</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 content-name">指令附件：</div>
+                        <div class="col-sm-7 content-detail">
+                            <input class="form-control  input-sm" readonly>
+                        </div>
+                        <div class="content-detail">
+                            <button class="btn btn-sm btn-default">附件上传</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
