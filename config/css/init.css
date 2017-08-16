@@ -1,0 +1,41 @@
+/*用于初始化Css*/
+body {
+    margin: 0;
+    font: 12px 微软雅黑, 宋体, Arial, sans-serif;
+}
+
+html, body {
+    -webkit-text-size-adjust: none;
+    background: #f7f7f7;
+}
+
+div, form, input, textarea, p, ul, li, dl, dt, dd, h1, table, h2 {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+input {
+    vertical-align: middle;
+    font-size: 100%;
+}
+
+img {
+    vertical-align: top;
+    border: 0;
+}
+
+em, i {
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+}

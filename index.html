@@ -30,27 +30,28 @@
 
 
     <!--自己的 -->
+    <link rel="stylesheet" type="text/css" href="config/css/init.css">
     <link rel="stylesheet" type="text/css" href="config/css/index.css">
     <link rel="stylesheet" type="text/css" href="config/css/my.css">
     <link rel="stylesheet" type="text/css" href="config/css/main.css">
-    <link rel="stylesheet" type="text/css" href="config/css/history.css">
+    <link rel="stylesheet" type="text/css" href="config/css/timeline.css">
     <script type="text/javascript" src="app/app.js"></script>
     <script type="text/javascript" src="app/directive.js"></script>
     <script type="text/javascript" src="app/common.js"></script>
     <script type="text/javascript" src="app/filter.js"></script>
     <script type="text/javascript" src="app/grid.js"></script>
     <script type="text/javascript" src="app/conn.js"></script>
-    <script type="text/javascript" src="controller/Index.js"></script>
-    <script type="text/javascript" src="service/AllService.js"></script>
 
     <script type="text/javascript" src="manage/home/controller/HomeController.js"></script>
     <script type="text/javascript" src="manage/entering/controller/EnteringController.js"></script>
+    <script type="text/javascript" src="manage/authorize/controller/AuthorizeController.js"></script>
+    <script type="text/javascript" src="manage/account/controller/AccountController.js"></script>
 
     <!--所有的插件和页面样式必须加载在 golbal 和 css样式之间 用于懒加载-->
     <link id="ng_load_plugins_before">
 
 </head>
-<body ng-app="app" ng-controller="IndexController" style="background-color:white;color: #666;">
+<body ng-app="app" style="background-color:white;color: #666;">
 
 
 <!--<div class="navbar  navbar-fixed-top" style="background-image: url('config/image/bg_mbody.jpg'); border-bottom: 2px solid #ddd;">-->
@@ -65,8 +66,8 @@
         <!--</div>-->
     <!--</div>-->
 
-    <div style="width: 100%;height: 55px;position: fixed;top: 0px;background-image: url('config/image/bg_mbody.jpg');z-index: 1003;">
-        <img style="padding: 5px 5px 5px 15px;" src="config/image/bsb_logo.png">
+<div style="width: 100%;height: 55px;position: fixed;top: 0px;background-image: url('config/images/bg_mbody.jpg');z-index: 1003;">
+    <img style="padding: 5px 5px 5px 15px;" src="config/images/bsb_logo.png">
         <span style="font-size: 22px;top: 15px; position: fixed; color: #551e09;">互联网托管平台系统</span>
         <button style="position: absolute;right: 28px; bottom: 3px;" type="button" class="btn btn-sm btn-default">退出</button>
         <button style="position: absolute;right: 78px;bottom: 3px;;" type="button" class="btn btn-sm btn-default">首页</button>
@@ -103,7 +104,7 @@
                      style="height: 0px;">
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">账户查询</a></li>
+                            <li><a ui-sref="account_query.detail">账户查询</a></li>
                         </ul>
                     </div>
                 </div>
@@ -117,7 +118,7 @@
                      style="height: 0px;">
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">项目查询</a></li>
+                            <li><a ui-sref="project_list">项目查询</a></li>
                         </ul>
                     </div>
                 </div>
@@ -131,7 +132,7 @@
                      style="height: 0px;">
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">--</a></li>
+                            <li><a ui-sref="interior_term">内部团队</a></li>
                         </ul>
                     </div>
                 </div>

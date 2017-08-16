@@ -12,13 +12,10 @@
             'ngCookies'
             ,'ui.router'
             ,'ui.bootstrap'
-            ,'oc.lazyLoad'
             , 'manage'
             , 'person'
-
+            , 'oc.lazyLoad'
             ,'agGrid'
-            ,'service'
-            ,'paper'
             ,'myDirective'
             ,'myFactory'
             ,'filter'
@@ -186,7 +183,7 @@
         if(getCookie('user')){
             $rootScope.user = getCookie('user')
         }else{
-            window.location.href = "/login.html";
+            // window.location.href = "/login.html";
         }
 
 
@@ -247,6 +244,31 @@
                 url:'/entering_tail',
                 templateUrl:'manage/entering/view/tail.html',
                 controller:'EnteringController'
+            })
+            .state('interior_term', {
+                url: '/interior_term',
+                templateUrl: 'manage/authorize/view/term.html',
+                controller: 'AuthorizeController'
+            })
+            .state('project_list', {
+                url: '/project_list',
+                templateUrl: 'manage/project/view/main.html',
+                controller: 'AuthorizeController'
+            })
+            .state('account_query', {
+                url: '/account_query',
+                templateUrl: 'manage/account/view/main.html',
+                controller: 'AccountController'
+            })
+            .state('account_query.detail', {
+                url: '/',
+                templateUrl: 'manage/account/view/detail.html',
+                controller: 'AuthorizeController'
+            })
+            .state('account_query.balance', {
+                url: '/',
+                templateUrl: 'manage/account/view/balance.html',
+                controller: 'AuthorizeController'
             })
     })
 
