@@ -3,8 +3,8 @@
     <div style="float: right;color: red;"><span class="glyphicon glyphicon-star"></span>收藏该资金信息</div>
     <div class="row" style="margin-top: 5px;">
         <div class="col-sm-2 content-name">账户信息：</div>
-        <div class="col-sm-4 content-detail">
-            <select class="form-control input-sm">
+        <div class="col-sm-4 content-detail select-sm">
+            <select class="form-control input-sm" gf-select opt="selectOpt">
                 <option></option>
             </select>
         </div>
@@ -62,12 +62,12 @@
         <div class="row grid-msg">
             <span>收入(总额)：8888888 &nbsp; &nbsp; &nbsp;支出(总额)：88888</span>
 
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default">对账单打印</button>
-                <button type="button" class="btn btn-default">对账单导出</button>
-                <button type="button" class="btn btn-default">凭证打印</button>
-                <button type="button" class="btn btn-default">凭证导出</button>
-            </div>
+
+            <button type="button" class="btn btn-sm btn-default">对账单打印</button>
+            <button type="button" class="btn btn-sm btn-default">对账单导出</button>
+            <button type="button" class="btn btn-sm btn-default">凭证打印</button>
+            <button type="button" class="btn btn-sm btn-default">凭证导出</button>
+
         </div>
         <div class="row" gf-grid="grid"></div>
     </div>

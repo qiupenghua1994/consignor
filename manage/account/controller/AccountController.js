@@ -5,42 +5,144 @@
 
     function AccountController($scope, $rootScope) {
 
+        $rootScope.$state.go('account_query.detail');
+    }
 
+    function AccountBalanceController($scope) {
         var data = [
-            {name: '项目1', type: '类型1', status: '未开户', time: '2007/5/5'},
-            {name: '项目2', type: '类型2', status: '已开户', time: '2007/5/5'}
+            {
+                name: '项目1',
+                type: '类型1',
+                account: '100,222.00',
+                accountName: '上海交大',
+                status: '未开户',
+                time: '2007/5/5',
+                income: '100,222.00',
+                outcome: '22,222.00',
+                balance: '78,000.00'
+            },
+            {
+                name: '项目2',
+                type: '类型2',
+                account: '130,222.00',
+                accountName: '上海交大',
+                status: '未开户',
+                time: '2007/5/5',
+                income: '100,222.00',
+                outcome: '22,222.00',
+                balance: '78,000.00'
+            },
+
         ];
         $scope.grid = {
+            autoFit: true,
             onGridReady: function () {
                 $scope.grid.api.setRowData(data);
             },
             columnDefs: [
                 {
-                    headerName: '项目名称',
-                    field: 'name'
-                },
-                {
-                    headerName: '项目类型',
-                    field: 'type'
-                },
-                {
-                    headerName: '项目状态',
-                    field: 'status'
-                },
-                {
-                    headerName: '项目成立日期',
+                    headerName: '交易日期',
                     field: 'time'
+                },
+                {
+                    headerName: '当日余额',
+                    field: 'account'
+                },
+                {
+                    headerName: '收入',
+                    field: 'income'
+                },
+                {
+                    headerName: '支出',
+                    field: 'outcome'
+                },
+                {
+                    headerName: '轧差',
+                    field: 'balance'
+                }
+
+            ]
+        };
+
+        $scope.selectOpt = {
+            placeholder: '输入项目名称或项目对应帐号关键字进行查询'
+        }
+
+    }
+
+    function AccountDetailController($scope) {
+        var data = [
+            {
+                name: '项目1',
+                type: '类型1',
+                account: '11236545',
+                accountName: '上海交大',
+                status: '未开户',
+                time: '2007/5/5',
+                income: '100,222.00',
+                outcome: '22,222.00',
+                balance: '78,000.00'
+            },
+            {
+                name: '项目2',
+                type: '类型1',
+                account: '11236545',
+                accountName: '上海交大',
+                status: '未开户',
+                time: '2007/5/5',
+                income: '100,222.00',
+                outcome: '22,222.00',
+                balance: '78,000.00'
+            },
+
+        ];
+        $scope.grid = {
+            autoFit: true,
+            onGridReady: function () {
+                $scope.grid.api.setRowData(data);
+            },
+            columnDefs: [
+                {
+                    headerName: '交易日期',
+                    field: 'time'
+                },
+                {
+                    headerName: '对方账户',
+                    field: 'account'
+                },
+                {
+                    headerName: '对方户名',
+                    field: 'accountName'
+                },
+                {
+                    headerName: '收入',
+                    field: 'income'
+                },
+                {
+                    headerName: '支出',
+                    field: 'outcome'
+                },
+                {
+                    headerName: '余额',
+                    field: 'balance'
+                },
+                {
+                    headerName: '操作',
+                    field: 'evt'
                 }
 
             ]
         }
 
-        $scope.pages = [
-            {}
-        ]
-        $rootScope.$state.go('account_query.detail');
+        $scope.selectOpt = {
+            placeholder: '输入项目名称或项目对应帐号关键字进行查询'
+        }
+
+
     }
 
     angular.module('manage')
         .controller('AccountController', AccountController)
+        .controller('AccountBalanceController', AccountBalanceController)
+        .controller('AccountDetailController', AccountDetailController)
 })(window.angular)

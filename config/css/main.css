@@ -45,12 +45,19 @@
     padding: 5px;
 }
 
-.grid .grid-msg .btn-group {
+.grid .grid-msg button {
     float: right;
+    padding: 3px;
+    margin: 0 1px;
 }
 
 .btn-default {
     border-color: orange;
-    color: orange;;
+    color: orange;
 }
 
+/*select2*/
+.select-sm .select2-container--bootstrap .select2-selection--single {
+    height: 30px;
+    padding: 5px 24px 5px 10px;
+}

@@ -252,25 +252,5 @@
         .directive('gfButtonClose',gfIconButtonDirectiveFactory('gfButtonClose','$dismiss','fa fa-close'))
         .directive('eCharts',eChartsDirective)
         .directive('gfInciudeView',gfIncludeViewDirective)
-        .directive('modelRender', function () {
-            return {
-                require: 'ngModel',
-                link: function (scope, iElm, iAttrs, ngModelCtrl) {
-                    iElm.on('mouseenter', function () {
-                        //尝试注释
-                        iElm.val(1);
-                        console.log(ngModelCtrl);
-
-                        //尝试注释
-                        ngModelCtrl.$setViewValue(1112);
-                        console.log(ngModelCtrl);
-
-                        //尝试注释
-                        //ngModelCtrl.$render();
-                        console.log(ngModelCtrl);
-                    })
-                }
-            }
-        })
 
 })(window.angular,window.JQuery)

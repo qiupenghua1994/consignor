@@ -172,16 +172,18 @@
                             <input class="form-control  input-sm" readonly>
                         </div>
                         <div class="content-detail">
-                            <button class="btn btn-sm btn-default">指令上传</button>
+                            <button class="btn btn-sm btn-default" ng-click="change()">选择文件</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3 content-name">指令附件：</div>
                         <div class="col-sm-7 content-detail">
-                            <input class="form-control  input-sm" readonly>
+                            <input class="form-control  input-sm" readonly ng-model="data.file.name">
                         </div>
                         <div class="content-detail">
-                            <button class="btn btn-sm btn-default">附件上传</button>
+                            <button class="btn btn-sm btn-default"
+                                    ngf-select ng-model="data.file" ngf-change="change()">选择文件
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -263,12 +263,12 @@
             .state('account_query.detail', {
                 url: '/',
                 templateUrl: 'manage/account/view/detail.html',
-                controller: 'AuthorizeController'
+                controller: 'AccountDetailController'
             })
             .state('account_query.balance', {
                 url: '/',
                 templateUrl: 'manage/account/view/balance.html',
-                controller: 'AuthorizeController'
+                controller: 'AccountBalanceController'
             })
     })
 
