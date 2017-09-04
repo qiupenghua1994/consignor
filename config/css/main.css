@@ -48,10 +48,15 @@
 .grid .grid-msg button {
     float: right;
     padding: 3px;
-    margin: 0 1px;
+    margin: 2px 1px;
 }
 
-.btn-default {
+.btn-default:active {
+    border-color: orange;
+    color: orange;
+}
+
+.btn-default.active {
     border-color: orange;
     color: orange;
 }

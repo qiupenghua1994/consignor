@@ -19,6 +19,7 @@
             console.log(a)
         }
 
+
     }
 
     angular.module('manage')

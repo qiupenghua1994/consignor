@@ -13,19 +13,19 @@
         <div class="col-sm-2 content-name"></div>
         <div class="col-sm-4 content-detail">
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default">今日</button>
-                <button type="button" class="btn btn-default">近一周</button>
-                <button type="button" class="btn btn-default">近一月</button>
+                <button type="button" class="btn btn-default" ng-click="setDate(0)">今日</button>
+                <button type="button" class="btn btn-default" ng-click="setDate(7)">近一周</button>
+                <button type="button" class="btn btn-default" ng-click="setDate(30)">近一月</button>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-2 content-name">交易日期：</div>
         <div class="col-sm-4 content-detail">
-            <input class="form-control  input-sm" type="date">
+            <input class="form-control  input-sm" ng-model="data.start" type="date">
         </div>
         <div class="col-sm-4 content-detail">
-            <input class="form-control  input-sm" type="date">
+            <input class="form-control  input-sm" ng-model="data.end" type="date">
         </div>
 
     </div>
@@ -36,10 +36,10 @@
     <div class="col-sm-12 grid">
         <div class="row grid-msg">
 
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default">历史余额打印</button>
-                <button type="button" class="btn btn-default">历史余额导出</button>
-            </div>
+
+            <button type="button" class="btn btn-sm btn-default">历史余额打印</button>
+            <button type="button" class="btn btn-sm btn-default">历史余额导出</button>
+
         </div>
         <div class="row" gf-grid="grid"></div>
     </div>

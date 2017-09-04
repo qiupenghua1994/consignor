@@ -245,6 +245,35 @@
         }
     }
 
+    function gfBtnGroupDirective() {
+
+        var btnTemp = '<button ng-repeat="item in data" ng-click="changeBtn($index)" type="button" class="btn btn-default" ng-class="{\'active\':item.flag}">{{item.name}}</button>';
+
+
+        return {
+            restrict: 'AE',
+            scope: {
+                data: '=',//data = [{id:1,name:}]
+                ngModel: '='
+            },
+            template: btnTemp,
+            controller: function ($scope) {
+            },
+            link: function (scope, element, attr) {
+                element.addClass('btn-group');
+                scope.changeBtn = function (index) {
+                    var a = scope.data[index].flag;
+                    for (var i in scope.data) {
+                        scope.data[i].flag = 0;
+                    }
+                    ;
+                    scope.data[index].flag = !a;
+                    scope.ngModel = scope.data[index].id;
+                }
+            }
+        }
+    }
+
 
     angular.module('myDirective',[])
         .directive('gfFormDialog',gfFormDialogDirective)
@@ -252,5 +281,6 @@
         .directive('gfButtonClose',gfIconButtonDirectiveFactory('gfButtonClose','$dismiss','fa fa-close'))
         .directive('eCharts',eChartsDirective)
         .directive('gfInciudeView',gfIncludeViewDirective)
+        .directive('gfBtnGroup', gfBtnGroupDirective)
 
 })(window.angular,window.JQuery)

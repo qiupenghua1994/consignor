@@ -64,8 +64,16 @@
             ]
         };
 
+        $scope.data = {};
         $scope.selectOpt = {
             placeholder: '输入项目名称或项目对应帐号关键字进行查询'
+        }
+
+        $scope.setDate = function (num) {
+            var today = new Date();
+            $scope.data.end = new Date();
+            $scope.data.start = new Date(today.setDate(today.getDate() - num));
+
         }
 
     }
@@ -134,9 +142,22 @@
             ]
         }
 
+        $scope.data = {};
         $scope.selectOpt = {
             placeholder: '输入项目名称或项目对应帐号关键字进行查询'
         }
+
+        $scope.setDate = function (num) {
+            var today = new Date();
+            $scope.data.end = new Date();
+            $scope.data.start = new Date(today.setDate(today.getDate() - num));
+        }
+
+        $scope.directionList = [
+            {id: 1, name: '收入'},
+            {id: 2, name: '支出'},
+            {id: 3, name: '全部'},
+        ];
 
 
     }
