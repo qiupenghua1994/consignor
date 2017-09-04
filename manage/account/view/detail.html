@@ -22,10 +22,13 @@
     <div class="row">
         <div class="col-sm-2 content-name">交易日期：</div>
         <div class="col-sm-4 content-detail">
-            <input class="form-control  input-sm" ng-model="data.start" type="date">
+            <div gf-date-picker opt="dateOpt" value="time"></div>
+            <!--<input class="form-control  input-sm"  ng-model="data.start" gf-date-picker opt="dateOpt" id="data1">-->
+            <!--<div class="input-group data"><input class="form-control  input-sm"  ng-model="data.start" gf-date  opt="dateOpt"><div class="input-group-addon"><span class="glyphicon glyphicon-th"></span> </div></div>-->
+            <!--<div></div>-->
         </div>
         <div class="col-sm-4 content-detail">
-            <input class="form-control  input-sm" ng-model="data.end" type="date">
+            <input class="form-control  input-sm" ng-model="time" type="text">
         </div>
 
     </div>

@@ -5,27 +5,27 @@
 
     function gfQueryListDirective() {
         var defaultOpt = {
-            placeholder: "µã»÷²éÑ¯",
-            //minimumInputLength: 2,¡¡//×îĞ¡²éÑ¯²ÎÊı
+            placeholder: "ç‚¹å‡»æŸ¥è¯¢",
+            //minimumInputLength: 2,ã€€//æœ€å°æŸ¥è¯¢å‚æ•°
             multiple: false,
             allowClear: false,
             //theme:'classic',
             theme: 'bootstrap',
             templateResult: function (item) {
-                return item.test;//×¢Òâ´Ë´¦µÄname£¬ÒªºÍajax·µ»ØÊı×éµÄ¼üÖµÒ»Ñù
-            }, // Ñ¡Ôñ½á¹ûÖĞµÄÏÔÊ¾
+                return item.test;//æ³¨æ„æ­¤å¤„çš„nameï¼Œè¦å’Œajaxè¿”å›æ•°ç»„çš„é”®å€¼ä¸€æ ·
+            }, // é€‰æ‹©ç»“æœä¸­çš„æ˜¾ç¤º
             escapeMarkup: function (m) {
                 return m;
-            },//×Ö·û×ªÒå´¦Àí
+            },//å­—ç¬¦è½¬ä¹‰å¤„ç†
             templateSelection: function (item) {
-                return item.test;//×¢Òâ´Ë´¦µÄname
-            }, // ËÑË÷ÁĞ±íÖĞµÄÏÔÊ¾
+                return item.test;//æ³¨æ„æ­¤å¤„çš„name
+            }, // æœç´¢åˆ—è¡¨ä¸­çš„æ˜¾ç¤º
         };
         var ajax = {
             url: "json/name.json",
             method: 'GET',
             dataType: 'json',
-            delay: 1000,//ÑÓ³Ù
+            delay: 1000,//å»¶è¿Ÿ
             data: function (term, page) {
                 return {
                     keyword: term,

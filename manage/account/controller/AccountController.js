@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/8/14.
  */
-(function (angular) {
+(function (angular, $) {
 
     function AccountController($scope, $rootScope) {
 
@@ -142,6 +142,9 @@
             ]
         }
 
+        $scope.dateOpt = {};
+
+        $scope.time = '2017-05-05';
         $scope.data = {};
         $scope.selectOpt = {
             placeholder: '输入项目名称或项目对应帐号关键字进行查询'
@@ -166,4 +169,4 @@
         .controller('AccountController', AccountController)
         .controller('AccountBalanceController', AccountBalanceController)
         .controller('AccountDetailController', AccountDetailController)
-})(window.angular)
+})(window.angular, window.jQuery)
