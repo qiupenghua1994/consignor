@@ -40,7 +40,6 @@
             },
             link: function (scope, ele, attr) {
                 var a = $(ele).datepicker(scope.opt);
-                debugger
             }
         }
     }
