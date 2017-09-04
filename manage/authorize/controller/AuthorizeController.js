@@ -37,6 +37,8 @@
 
             ]
         }
+
+
     }
 
     angular.module('manage')
