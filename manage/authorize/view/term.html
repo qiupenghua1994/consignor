@@ -11,10 +11,13 @@
                 <button type="button" class="btn btn-default">审批授权</button>
             </div>
             <div>
-                <input type="text" class=""/>
+                <div gf-tree-input opt="treeOpt" value="treeId" obj="treeObj"></div>
+
+                <input type="text" class="form-control" ng-model="treeObj.id"/>
+
             </div>
             <div>
-                <ul gf-tree class="ztree" style="margin-top:0; width:100%; height:auto;"></ul>
+
             </div>
         </div>
         <div style="margin-left: 270px">
@@ -30,10 +33,11 @@
                 <div class="row">
                     <div class="col-sm-3 content-name">项目名称：</div>
                     <div class="col-sm-7 content-detail">
-                        <select class="form-control input-sm">
-                            <option>项目1</option>
-                            <option>项目2</option>
-                        </select>
+                        <div gf-tree-input></div>
+                        <!--<select class="form-control input-sm">-->
+                        <!--<option>项目1</option>-->
+                        <!--<option>项目2</option>-->
+                        <!--</select>-->
                     </div>
                 </div>
                 <div class="col-sm-4" style="padding: 2px;">

@@ -11,7 +11,7 @@
     color: #4E1707;
 }
 
-/*±êÇ©Ò³*/
+/*ï¿½ï¿½Ç©Ò³*/
 .content-border-card{
     height: 20px;
     width: 160px;
@@ -22,7 +22,7 @@
     color: white;
 }
 
-/*±êÇ©Ò³100%¿í*/
+/*ï¿½ï¿½Ç©Ò³100%ï¿½ï¿½*/
 .content-border-card-100w {
     height: 20px;
     width: 100%;
@@ -65,4 +65,17 @@
 .select-sm .select2-container--bootstrap .select2-selection--single {
     height: 30px;
     padding: 5px 24px 5px 10px;
+}
+
+/*ztree*/
+.ztree {
+    margin-top: 0;
+    min-width: 217px;
+    height: auto;
+    max-height: 170px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 900;
 }

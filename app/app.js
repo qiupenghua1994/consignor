@@ -14,6 +14,7 @@
             ,'ui.bootstrap'
             , 'manage'
             , 'person'
+            , 'demo'
             , 'oc.lazyLoad'
             ,'agGrid'
             ,'myDirective'
@@ -269,6 +270,11 @@
                 url: '/',
                 templateUrl: 'manage/account/view/balance.html',
                 controller: 'AccountBalanceController'
+            })
+            .state('demo', {
+                url: '/demo',
+                templateUrl: 'demo/view/demo.html',
+                controller: 'DemoController'
             })
     })
 
