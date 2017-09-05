@@ -46,7 +46,7 @@
         ];
 
 
-        var temp = '<input ng-model="showText" type="text" class="form-control input-sm" ng-click="open($event)"/>' +
+        var temp = '<input ng-model="showText" type="text" class="form-control input-sm readonly-pointer" ng-click="open($event)" readonly/>' +
             '<ul gf-tree opt="opt" value="value" class="ztree" style="display: none"></ul>';
 
 

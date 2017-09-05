@@ -4,43 +4,79 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
+<style>
+    hr {
+        border-style: solid;
+        border-color: #ddd;
+    }
+</style>
 <body>
 <div class="row">
-    <div class="col-sm-7">
+    <div class="col-sm-12">
+        <hr/>
+    </div>
+    <div class="col-sm-6">
         <div class="col-sm-3 content-name">下拉树：</div>
         <div class="col-sm-7 content-detail">
             <div gf-tree-input opt="treeOpt" value="treeId" obj="treeObj"></div>
         </div>
     </div>
-    <div class="col-sm-5">
-
+    <div class="col-sm-6">
+        配置参数 opt：{{treeOpt}}<br>
+        选中项Id value:{{treeId}} <br>
+        选中项目 obj:{{treeObj}}<br>
     </div>
-    <div class="col-sm-7">
+    <div class="col-sm-12">
+        <hr/>
+    </div>
+    <div class="col-sm-6">
         <div class="col-sm-3 content-name">下拉列表：</div>
-        <div class="col-sm-7 content-detail select-sm">
-            <select class="form-control input-sm" gf-select opt="selectOpt"></select>
+        <div class="col-sm-7 content-detail">
+            <div class="gf-select2 gf-select2-sm">
+                <select gf-select opt="selectOpt" value="selectId" obj="selectObj" style="width: 100%;">
+                    <option></option>
+                </select>
+            </div>
         </div>
     </div>
-    <div class="col-sm-5">
-        <p>注意 select-sm 的位置</p>
+    <div class="col-sm-6">
+        <p>注意 select-sm 的位置,option 必要一个 style 也不可少，用于响应</p>
+        配置参数 opt: {{selectOpt}}<br>
+        选中项Id value:{{selectId}} <br>
+        选中项目 obj.text:{{selectObj}}
     </div>
-    <div class="col-sm-7">
+    <div class="col-sm-12">
+        <hr/>
+    </div>
+    <div class="col-sm-6">
         <div class="col-sm-3 content-name">单选按钮：</div>
         <div class="col-sm-7 content-detail">
-            <div gf-btn-group data="directionList" ng-model="direction" role="group"></div>
+            <div gf-btn-group data="checkRadioList1" value="checkRadioId" multiple="checkRadioId2"
+                 obj="checkRadioObj"></div>
+            <div gf-btn-group data="checkRadioList2" value="checkRadioId2"></div>
         </div>
     </div>
-    <div class="col-sm-5">
-
+    <div class="col-sm-6">
+        选项参数 data: {{checkRadioList1}}<br>
+        选中项Id value:{{checkRadioId}} <br>
+        多选 multiple:{{checkRadioId2}} <br>
+        返回对象 checkRadioObj:{{checkRadioObj}} <br>
     </div>
-    <div class="col-sm-7">
-        <div class="col-sm-3 content-name">单选按钮：</div>
+    <div class="col-sm-12">
+        <hr/>
+    </div>
+    <div class="col-sm-6">
+        <div class="col-sm-3 content-name">日期：</div>
         <div class="col-sm-7 content-detail">
             <div gf-date-picker opt="dateOpt" value="datePicker"></div>
         </div>
     </div>
-    <div class="col-sm-5">
-
+    <div class="col-sm-6">
+        配置参数 opt: {{dateOpt}}<br>
+        选中项Id value:{{datePicker}} <br>
+    </div>
+    <div class="col-sm-12">
+        <hr/>
     </div>
 
 

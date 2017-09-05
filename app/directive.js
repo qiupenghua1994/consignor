@@ -247,28 +247,52 @@
 
     function gfBtnGroupDirective() {
 
-        var btnTemp = '<button ng-repeat="item in data" ng-click="changeBtn($index)" type="button" class="btn btn-default" ng-class="{\'active\':item.flag}">{{item.name}}</button>';
+        // track by $index 为了repeat 不出现 $$hashkey
+        var btnTemp = '<button ng-repeat="item in data track by $index" ng-click="changeBtn($index)" type="button" class="btn btn-default" ng-class="{\'active\':dataFlag[$index]}">{{item.text}}</button>';
 
 
         return {
             restrict: 'AE',
             scope: {
                 data: '=',//data = [{id:1,name:}]
-                ngModel: '='
+                value: '=?',
+                obj: '=?',
+                multiple: '=?', //多选 boolean
             },
             template: btnTemp,
             controller: function ($scope) {
             },
             link: function (scope, element, attr) {
                 element.addClass('btn-group');
+
+                scope.dataFlag = [];
+                initFlag();
+
                 scope.changeBtn = function (index) {
-                    var a = scope.data[index].flag;
-                    for (var i in scope.data) {
-                        scope.data[i].flag = 0;
+
+                    var a = scope.dataFlag[index];
+                    if (scope.multiple) {
+                        scope.dataFlag[index] = !a;
+                        scope.value = '';
+                        scope.obj = [];
+                        for (var i in scope.data) {
+                            if (scope.dataFlag[i]) {
+                                scope.value += scope.data[i].id + ',';
+                                scope.obj.push(scope.data[i]);
+                            }
+                        }
+                    } else {
+                        initFlag();
+                        scope.dataFlag[index] = !a;
+                        scope.value = a != 0 ? '' : scope.data[index].id;
+                        scope.obj = a != 0 ? [] : scope.data[index];
                     }
-                    ;
-                    scope.data[index].flag = !a;
-                    scope.ngModel = scope.data[index].id;
+                }
+
+                function initFlag() {
+                    for (var i in scope.data) {
+                        scope.dataFlag[i] = 0;
+                    }
                 }
             }
         }

@@ -46,9 +46,9 @@
 
     function gfDatePickerDirective() {
         var temp = '<div class="input-group data">' +
-            '<input class="form-control  input-sm"  ng-model="value" gf-date  opt="opt">' +
+            '<input class="form-control  input-sm readonly-pointer"  ng-model="value" gf-date  opt="opt" readonly>' +
             '<div class="input-group-addon">' +
-            '<span class="glyphicon glyphicon-th"></span> ' +
+            '<span class="fa fa-calendar"></span> ' +
             '</div>' +
             '</div>';
         return {

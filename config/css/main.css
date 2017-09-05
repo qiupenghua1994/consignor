@@ -11,7 +11,7 @@
     color: #4E1707;
 }
 
-/*��ǩҳ*/
+
 .content-border-card{
     height: 20px;
     width: 160px;
@@ -22,7 +22,7 @@
     color: white;
 }
 
-/*��ǩҳ100%��*/
+
 .content-border-card-100w {
     height: 20px;
     width: 100%;
@@ -61,8 +61,19 @@
     color: orange;
 }
 
+/*可点击的readOnly*/
+.readonly-pointer[readonly] {
+    cursor: pointer;
+    background-color: #fff;
+    opacity: 1;
+}
+
 /*select2*/
-.select-sm .select2-container--bootstrap .select2-selection--single {
+.gf-select2 {
+
+}
+
+.gf-select2.gf-select2-sm .select2-container--bootstrap .select2-selection--single {
     height: 30px;
     padding: 5px 24px 5px 10px;
 }
@@ -78,4 +89,9 @@
     background-color: #fff;
     border: 1px solid #ccc;
     z-index: 900;
+}
+
+/*bootstrap*/
+.input-group-addon {
+    padding: 6px 8px;
 }

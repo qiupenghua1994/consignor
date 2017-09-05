@@ -3,6 +3,10 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/datepicker.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/select2.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config/css/main.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/json" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/json/instruct.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/json/name.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/manage/account/controller/AccountController.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/manage/authorize/controller/AuthorizeController.js" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
