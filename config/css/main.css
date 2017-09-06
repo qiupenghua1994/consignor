@@ -61,6 +61,18 @@
     color: orange;
 }
 
+/*下拉小图标*/
+.down-button {
+    border-color: #999999 transparent transparent transparent;
+    border-width: 4px;
+    border-style: solid;
+    cursor: pointer;
+    width: 5px;
+    position: absolute;
+    right: 27px;
+    top: 13px;
+}
+
 /*可点击的readOnly*/
 .readonly-pointer[readonly] {
     cursor: pointer;

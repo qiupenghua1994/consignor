@@ -46,7 +46,8 @@
         ];
 
 
-        var temp = '<input ng-model="showText" type="text" class="form-control input-sm readonly-pointer" ng-click="open($event)" readonly/>' +
+        var temp = '<p class="down-button" ng-click="open($event)"></p><input placeholder="请选择" ng-model="showText" type="text" class="form-control input-sm readonly-pointer" ' +
+            'ng-click="open($event)" readonly/>' +
             '<ul gf-tree opt="opt" value="value" class="ztree" style="display: none"></ul>';
 
 
@@ -69,9 +70,15 @@
                 if (flag) {
                     parent.children('ul').slideDown("fast");
                     $("body").bind("mousedown", onBodyDown(idNum));
+                    var spanId = 'p[id=\'input' + idNum + '\'] ';
+                    $(spanId).css('border-color', ' transparent transparent #999999 transparent ');
+                    $(spanId).css('top', '9px');
                     reSize(parent);
                 } else {
                     parent.children('ul').fadeOut("fast");
+                    var spanId = 'p[id=\'input' + idNum + '\'] ';
+                    $(spanId).css('border-color', ' #999999 transparent transparent  transparent ');
+                    $(spanId).css('top', '13px');
                     $("body").unbind("mousedown", onBodyDown(idNum));
                 }
             };
@@ -94,6 +101,9 @@
 
             function closeTreeInput(treeId) {
                 $('#' + treeId).fadeOut("fast");
+                var spanId = 'p[id=\'input' + treeId + '\'] ';
+                $(spanId).css('border-color', ' #999999 transparent transparent transparent');
+                $(spanId).css('top', '13px');
                 $("body").unbind("mousedown", onBodyDown(treeId));
             }
 

@@ -24,12 +24,15 @@
             //clearBtn:true,
             //todayBtn:true,
             todayHighlight: true,
+            //endDate:'2017-09-09',
+            //startDate:'2017-09-05'
         };
 
         return {
             restrict: 'AE',
             scope: {
                 opt: '=',
+                elem: '=?'
 
             },
             controller: function ($scope, $attrs) {
@@ -40,15 +43,16 @@
             },
             link: function (scope, ele, attr) {
                 var a = $(ele).datepicker(scope.opt);
+                scope.elem = ele;
             }
         }
     }
 
     function gfDatePickerDirective() {
-        var temp = '<div class="input-group data">' +
-            '<input class="form-control  input-sm readonly-pointer"  ng-model="value" gf-date  opt="opt" readonly>' +
-            '<div class="input-group-addon">' +
-            '<span class="fa fa-calendar"></span> ' +
+        var temp = '<div class="input-group date">' +
+            '<input type="text" class="form-control  input-sm readonly-pointer"  ng-model="value" gf-date  opt="opt" elem="inputElem" readonly>' +
+            '<div class="input-group-addon" ng-click="openDatePicker()">' +
+            '<span class ="glyphicon glyphicon-th" ng-click="openDatePicker()"> </span> ' +
             '</div>' +
             '</div>';
         return {
@@ -61,6 +65,9 @@
             controller: function ($scope, $attrs) {
                 if ($scope.value) {
                     $scope.opt.defaultViewDate = $scope.value;
+                }
+                $scope.openDatePicker = function () {
+                    $($scope.inputElem).datepicker('show');
                 }
             },
             link: function (scope, ele, attr) {

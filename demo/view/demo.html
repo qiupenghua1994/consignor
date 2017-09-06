@@ -16,6 +16,18 @@
         <hr/>
     </div>
     <div class="col-sm-6">
+        <div class="col-sm-3 content-name">正常输入框：</div>
+        <div class="col-sm-7 content-detail">
+            <input class="form-control input-sm" ng-model="inputValue"/>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        返回值 ng-model：{{inputValue}}<br>
+    </div>
+    <div class="col-sm-12">
+        <hr/>
+    </div>
+    <div class="col-sm-6">
         <div class="col-sm-3 content-name">下拉树：</div>
         <div class="col-sm-7 content-detail">
             <div gf-tree-input opt="treeOpt" value="treeId" obj="treeObj"></div>
