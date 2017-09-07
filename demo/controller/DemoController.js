@@ -6,6 +6,14 @@
     function DemoController($scope) {
 
 
+        //上传弹窗
+        $scope.openUploadDialog = function () {
+            var q = App.showDialog('demo/view/upload.html', 'DemoUploadController');
+            q.then(function () {
+
+            });
+        }
+
         //树
         $scope.treeOnChange = function (treeNode, treeId, event) {
             console.log(treeNode);
@@ -44,6 +52,22 @@
 
     }
 
+    function DemoUploadController($scope) {
+        //上传组件
+
+        $scope.partialDownloadLink = 'http://localhost:8080/download?filename=';
+        $scope.filename = '';
+
+        $scope.uploadFile = function () {
+            $scope.processDropzone();
+        };
+
+        $scope.reset = function () {
+            $scope.resetDropzone();
+        };
+    }
+
     angular.module('demo', [])
         .controller('DemoController', DemoController)
+        .controller('DemoUploadController', DemoUploadController)
 }(window.angular, window.jQuery));

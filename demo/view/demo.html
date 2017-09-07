@@ -22,13 +22,19 @@
         </div>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-3 content-name">正常输入框：</div>
-        <div class="col-sm-7 content-detail">
-            <input class="form-control input-sm" ng-model="inputValue"/>
-        </div>
+        返回值 ng-model：{{inputValue}}<br>
+    </div>
+    <div class="col-sm-12">
+        <hr/>
     </div>
     <div class="col-sm-6">
-        返回值 ng-model：{{inputValue}}<br>
+        <div class="col-sm-3 content-name">上传：</div>
+        <div class="col-sm-5 content-detail">
+            <input ng-model="file" class="form-control">
+        </div>
+        <div class="col-sm-2">
+            <button ng-click="openUploadDialog()">上传</button>
+        </div>
     </div>
     <div class="col-sm-12">
         <hr/>
