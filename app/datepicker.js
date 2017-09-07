@@ -32,25 +32,43 @@
             restrict: 'AE',
             scope: {
                 opt: '=',
-                elem: '=?'
-
+                elem: '=?',
+                onChange: '&?'
             },
             controller: function ($scope, $attrs) {
-                var vm = $scope;
 
-
-                vm.opt = angular.extend(defaultOpt, vm.opt);
             },
             link: function (scope, ele, attr) {
-                var a = $(ele).datepicker(scope.opt);
-                scope.elem = ele;
+
+                var opt;
+
+                scope.$watch('opt', function () {
+                    initDatePicker();
+                    console.log(1);
+                }, true);
+
+                function initDatePicker() {
+                    opt = angular.extend(defaultOpt, scope.opt);
+                    $(ele).datepicker('destroy');
+                    var a = $(ele).datepicker(opt);
+                    $(ele).datepicker('update', scope.opt.defaultViewDate);
+                    $(ele).datepicker().on('changeDate', changeDate);
+                    scope.elem = ele;
+                }
+
+                function changeDate(e) {
+                    if (scope.onChange() && typeof scope.onChange() == 'function') {
+                        scope.onChange()(e);
+                    }
+                }
             }
         }
     }
 
     function gfDatePickerDirective() {
         var temp = '<div class="input-group date">' +
-            '<input type="text" class="form-control  input-sm readonly-pointer"  ng-model="value" gf-date  opt="opt" elem="inputElem" readonly>' +
+            '<input type="text" class="form-control  input-sm readonly-pointer"  ' +
+            'ng-model="value" gf-date  opt="opt" elem="dateElem" on-change="onChange" readonly>' +
             '<div class="input-group-addon" ng-click="openDatePicker()">' +
             '<span class ="glyphicon glyphicon-th" ng-click="openDatePicker()"> </span> ' +
             '</div>' +
@@ -60,14 +78,39 @@
             template: temp,
             scope: {
                 value: '=',
-                opt: '=',
+                opt: '=?',
+                onChange: '=?',
+                startDate: '=?',
+                endDate: '=?',
+
             },
             controller: function ($scope, $attrs) {
-                if ($scope.value) {
-                    $scope.opt.defaultViewDate = $scope.value;
-                }
+
+                initOpt();
                 $scope.openDatePicker = function () {
-                    $($scope.inputElem).datepicker('show');
+                    $($scope.dateElem).datepicker('show');
+                };
+
+                $scope.$watch(canChangeOpt, function () {
+                })
+                function initOpt() {
+                    if (!$scope.opt) {
+                        $scope.opt = {};
+                    }
+
+                    canChangeOpt();
+                }
+
+                function canChangeOpt() {
+                    if ($scope.startDate) {
+                        $scope.opt.startDate = $scope.startDate;
+                    }
+                    if ($scope.endDate) {
+                        $scope.opt.endDate = $scope.endDate;
+                    }
+                    if ($scope.value) {
+                        $scope.opt.defaultViewDate = $scope.value;
+                    }
                 }
             },
             link: function (scope, ele, attr) {

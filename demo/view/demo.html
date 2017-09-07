@@ -22,6 +22,12 @@
         </div>
     </div>
     <div class="col-sm-6">
+        <div class="col-sm-3 content-name">正常输入框：</div>
+        <div class="col-sm-7 content-detail">
+            <input class="form-control input-sm" ng-model="inputValue"/>
+        </div>
+    </div>
+    <div class="col-sm-6">
         返回值 ng-model：{{inputValue}}<br>
     </div>
     <div class="col-sm-12">
@@ -30,7 +36,7 @@
     <div class="col-sm-6">
         <div class="col-sm-3 content-name">下拉树：</div>
         <div class="col-sm-7 content-detail">
-            <div gf-tree-input opt="treeOpt" value="treeId" obj="treeObj"></div>
+            <div gf-tree-input opt="treeOpt" value="treeId" obj="treeObj" on-change="treeOnChange"></div>
         </div>
     </div>
     <div class="col-sm-6">
@@ -42,20 +48,22 @@
         <hr/>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-3 content-name">下拉列表：</div>
+        <div class="col-sm-3 content-name">字典下拉列表：</div>
         <div class="col-sm-7 content-detail">
-            <div class="gf-select2 gf-select2-sm">
-                <select gf-select opt="selectOpt" value="selectId" obj="selectObj" style="width: 100%;">
-                    <option></option>
-                </select>
-            </div>
+            <div gf-select-dict dict="dictName" opt="selectOpt" value="selectId" obj="selectObj"
+                 on-change="selectOnChane"></div>
+        </div>
+        <div class="col-sm-3 content-name">模糊下拉列表：</div>
+        <div class="col-sm-7 content-detail">
+            <div gf-select-search opt="selectOpt" value="selectId" obj="selectObj" on-change="selectOnChane"></div>
         </div>
     </div>
     <div class="col-sm-6">
-        <p>注意 select-sm 的位置,option 必要一个 style 也不可少，用于响应</p>
         配置参数 opt: {{selectOpt}}<br>
         选中项Id value:{{selectId}} <br>
         选中项目 obj.text:{{selectObj}}
+        gf-select-search 模糊搜索
+        gf-select-dict 字典下拉 dict 字典名
     </div>
     <div class="col-sm-12">
         <hr/>
@@ -78,9 +86,18 @@
         <hr/>
     </div>
     <div class="col-sm-6">
+        <div class="col-sm-3 content-name">开始日期：</div>
+        <div class="col-sm-7 content-detail">
+            <div gf-date-picker value="datePickerStart"></div>
+        </div>
+        <div class="col-sm-3 content-name">结束日期：</div>
+        <div class="col-sm-7 content-detail">
+            <div gf-date-picker value="datePickerEnd"></div>
+        </div>
         <div class="col-sm-3 content-name">日期：</div>
         <div class="col-sm-7 content-detail">
-            <div gf-date-picker opt="dateOpt" value="datePicker"></div>
+            <div gf-date-picker opt="dateOpt" value="datePicker"
+                 on-change="dateOnChange" start-date="datePickerStart" end-date="datePickerEnd"></div>
         </div>
     </div>
     <div class="col-sm-6">

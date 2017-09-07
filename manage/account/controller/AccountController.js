@@ -8,7 +8,7 @@
         $rootScope.$state.go('account_query.detail');
     }
 
-    function AccountBalanceController($scope) {
+    function AccountBalanceController($scope, $filter) {
         var data = [
             {
                 name: '项目1',
@@ -67,18 +67,17 @@
         $scope.data = {};
         $scope.selectOpt = {
             placeholder: '输入项目名称或项目对应帐号关键字进行查询'
-        }
-
+        };
         $scope.setDate = function (num) {
             var today = new Date();
-            $scope.data.end = new Date();
-            $scope.data.start = new Date(today.setDate(today.getDate() - num));
+            $scope.data.end = $filter('date')(new Date(), 'yyyy-MM-dd');
+            $scope.data.start = $filter('date')(new Date(today.setDate(today.getDate() - num)), 'yyyy-MM-dd');
 
         }
 
     }
 
-    function AccountDetailController($scope) {
+    function AccountDetailController($scope, $filter) {
         var data = [
             {
                 name: '项目1',
@@ -152,14 +151,15 @@
 
         $scope.setDate = function (num) {
             var today = new Date();
-            $scope.data.end = new Date();
-            $scope.data.start = new Date(today.setDate(today.getDate() - num));
+            $scope.data.end = $filter('date')(new Date(), 'yyyy-MM-dd');
+            $scope.data.start = $filter('date')(new Date(today.setDate(today.getDate() - num)), 'yyyy-MM-dd');
+
         }
 
         $scope.directionList = [
-            {id: 1, name: '收入'},
-            {id: 2, name: '支出'},
-            {id: 3, name: '全部'},
+            {id: 1, text: '收入'},
+            {id: 2, text: '支出'},
+            {id: 3, text: '全部'},
         ];
 
 

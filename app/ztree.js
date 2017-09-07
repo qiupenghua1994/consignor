@@ -46,9 +46,9 @@
         ];
 
 
-        var temp = '<p class="down-button" ng-click="open($event)"></p><input placeholder="请选择" ng-model="showText" type="text" class="form-control input-sm readonly-pointer" ' +
+        var temp = '<div style="position: relative"><p class="down-button" ng-click="open($event)"></p><input placeholder="请选择" ng-model="showText" type="text" class="form-control input-sm readonly-pointer" ' +
             'ng-click="open($event)" readonly/>' +
-            '<ul gf-tree opt="opt" value="value" class="ztree" style="display: none"></ul>';
+            '<ul gf-tree opt="opt" value="value" class="ztree" style="display: none"></ul></div>';
 
 
         function gfTreeInputController($scope, $attrs) {
@@ -128,8 +128,12 @@
 
                 function onClickCallBack(event, treeId, treeNode) {
                     setValue(treeNode);
-                    closeTreeInput(treeId)
+                    closeTreeInput(treeId);
+                    if ($scope.onChange() && typeof $scope.onChange == 'function') {
+                        $scope.onChange()(treeNode, treeId, event);
+                    }
                 };
+
 
 
                 return setting;
@@ -144,6 +148,7 @@
                 opt: '=?',
                 value: '=',
                 obj: '=?',
+                onChange: '&?'
             },
             controller: gfTreeInputController,
             link: function (scope, ele, attr) {

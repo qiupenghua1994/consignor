@@ -171,49 +171,9 @@ var App = function ($,angular,window) {
             }
             $form.$setPristine();
         }
-        function get100(){
-            var arr=[1,2,3,4,5,6,7,8,9];
-            var arr2=[1,0,0,0,0,0,0,0,0];
-            var haodo=['','+','-'];
-            while(arr2[1]!=2){
-                var sum=0;
-                arr2=add3bit(arr2,8);
-                for(var i=0;i<9;i++){
-                    if(arr2[i]===0){
-                        sum=sum*10+arr[i];
-                    }
-                    if(arr2[i]===1){
-                        sum+=arr[i];
-                    }
-                    if(arr2[i]==2){
-                        sum-=arr[i];
-                    }
-                }
-                if(sum==100){
-                    var str="输出为：";
-                    for(var i=0;i<9;i++){
-                        str = str + haodo[arr2[i]]+ arr[i];
-                    }
-                    str += '='+sum;
-                    console.log(str);
-                }
-            }
-        }
-        function add3bit(arr,index){
-            if(index==0 && arr[0]+1==3 ){
-                return arr;
-            }
-            arr[index]++;
-            if(arr[index]==3 && index!=0){
-                arr[index]=0;
-                add3bit(arr,index-1);
-            }
-            return arr;
-        }
 
         return {
             clearFormDate:clearFormDate,
-            get100:get100,
             lazyLoad:lazyLoad,
             loadController:loadController,
             isControllerLoaded:isControllerLoaded

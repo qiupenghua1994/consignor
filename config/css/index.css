@@ -105,18 +105,7 @@ h4 {
     border-bottom: 1px dashed #cccccc;
 }
 
-/*基本表单*/
-.content-name {
-    text-align: right;
-    padding-top: 5px;
-    padding-right: 0;
-}
 
-.content-detail {
-    margin-bottom: 5px;
-    /* padding-left: 5px; */
-    padding-left: 0;
-}
 
 /*container-fluid下的栅格padding全部取消，主要用于弹框中使用*/
 .container-fluid > .col-sm-1, .container-fluid > .col-sm-2, .container-fluid > .col-sm-3, .container-fluid > .col-sm-4,
@@ -171,41 +160,6 @@ h4 {
 
 /*页头*/
 
-/*排行榜*/
-.rankings {
-    border-bottom: 1px dashed #ccc;
-    padding: 5px;
-}
-
-/*新闻*/
-.news {
-    border-bottom: 1px dashed #ccc;
-    padding: 5px;
-}
-
-/*排行榜下的栅格去除内边框*/
-.news .col-sm-1, .news .col-sm-2 {
-    padding: 0px;
-}
-
-/*考题边框*/
-.question {
-    /*border: 1px solid #ccc;*/
-    padding: 5px;
-    /*margin-bottom: 3px;*/
-}
-
-.question .list-group-item {
-    padding: 3px;
-}
-
-.question .list-group .active {
-    background-color: #e0e0e0;
-}
-
-.redColor {
-    background-color: red;
-}
 
 /*输入框name*/
 .name {

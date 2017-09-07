@@ -76,26 +76,113 @@
                         vm.obj = evt.params.data;
                         vm.value = evt.params.data.id;
                         vm.$apply();
+                        if (vm.onChange() && typeof vm.onChange == 'function') {
+                            vm.onChange()(evt.params.data, evt)
+                        }
                     }
-
                 });
             }
-
         }
 
         return {
             restrict: 'AE',
+            priority: '100',
             scope: {
                 opt: '=',
                 value: '=',
-                obj: '=',
+                obj: '=?',
+                onChange: '&?',
             },
             controller: gfSelectController,
             link: gfSelectLink,
         }
     }
 
+    function gfSelectSearchDirective() {
+        var temp = '<div class="gf-select2 gf-select2-sm">' +
+            '<select opt="opt" gf-select value="value" obj="obj" on-change="onChange" style="width: 100%;">' +
+            '<option></option>' +
+            '</select></div>';
+
+        function gfSelectSearchLink(scope, elem, attr) {
+
+        }
+
+        return {
+            restrict: 'AE',
+            template: temp,
+            priority: '101',
+            scope: {
+                opt: '=',
+                value: '=',
+                obj: '=?',
+                onChange: '=?',
+            },
+            controller: function () {
+
+            },
+            link: gfSelectSearchLink,
+
+        }
+
+    }
+
+    function gfSelectDictDirective() {
+        var temp = '<div class="gf-select2 gf-select2-sm">' +
+            '<select opt="opt" gf-select value="value" obj="obj" on-change="onChange" style="width: 100%;">' +
+            '<option></option>' +
+            '</select></div>';
+
+        function gfSelectDictLink(scope, elem, attr) {
+            if (scope.opt) {
+                scope.opt.minimumResultsForSearch = false
+            }
+
+            if (scope.dict) {
+                var htmlobj = $.ajax({url: "../json/name.json", async: false});
+                var data = htmlobj.responseJSON;
+                //scope.opt.url=null;
+                scope.opt.data = data.rows;
+            }
+        }
+
+        function gfSelectDickController($scope, $element, $attrs) {
+            if ($scope.opt) {
+                $scope.opt.minimumResultsForSearch = Infinity
+            }
+
+            if ($scope.dict) {
+                var htmlobj = $.ajax({url: "../json/name.json", async: false});
+                var data = htmlobj.responseJSON;
+                //
+                $scope.opt.url = null;
+                $scope.opt.data = data.rows;
+            }
+        }
+
+        return {
+            restrict: 'AE',
+            template: temp,
+            priority: '101',
+            scope: {
+                opt: '=',
+                value: '=',
+                obj: '=?',
+                dict: '@',//字典名字
+                onChange: '=?',
+            },
+            controller: gfSelectDickController,
+            link: gfSelectDictLink,
+
+        }
+
+    }
+
+
+
     angular.module('myDirective')
         .directive('gfSelect', gfSelectDirective)
+        .directive('gfSelectSearch', gfSelectSearchDirective)
+        .directive('gfSelectDict', gfSelectDictDirective)
 
 }(window.angular, window.jQuery));
