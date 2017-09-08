@@ -25,9 +25,7 @@
                 <div class="row">
                     <div class="col-sm-3 content-name">付款帐号：</div>
                     <div class="col-sm-7 content-detail">
-                        <select class="form-control input-sm">
-                            <option>321546548</option>
-                        </select>
+                        <div gf-select-search value="account" opt="opt1"></div>
                     </div>
                     <div class="content-detail">
                         <button class="btn btn-sm btn-default">选择帐号</button>
@@ -59,9 +57,12 @@
                 <div class="row">
                     <div class="col-sm-3 content-name">收款人帐号：</div>
                     <div class="col-sm-7 content-detail">
-                        <select class="form-control input-sm">
-                            <option>321546548</option>
-                        </select>
+                        <div gf-select value="account" opt="opt1">
+                            <option>ad</option>
+                            <option>ad</option>
+                            <option>ad</option>
+                            <option>ad</option>
+                        </div>
                     </div>
                     <div class="content-detail">
                         <button class="btn btn-sm btn-default">查询收款人</button>
@@ -111,18 +112,16 @@
                 <div class="row">
                     <div class="col-sm-3 content-name">划款事由：</div>
                     <div class="col-sm-7 content-detail">
-                        <select class="form-control input-sm">
-                            <option>321546548</option>
-                        </select>
+                        <div gf-select-search value="account" opt="opt1"></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-3 content-name">指令附件：</div>
                     <div class="col-sm-7 content-detail">
-                        <input class="form-control  input-sm" readonly>
-                    </div>
-                    <div class="content-detail">
-                        <button class="btn btn-sm btn-default">附件上传</button>
+                        <form action="" class="dropzone" dropzone="">
+                            <div class="dz-default dz-message">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -135,9 +134,7 @@
                     <div class="row">
                         <div class="col-sm-3 content-name">付款帐号：</div>
                         <div class="col-sm-7 content-detail">
-                            <select class="form-control input-sm">
-                                <option>321546548</option>
-                            </select>
+                            <div gf-select-search value="account" opt="opt1"></div>
                         </div>
                         <div class="content-detail">
                             <button class="btn btn-sm btn-default">选择帐号</button>
@@ -169,21 +166,19 @@
                     <div class="row">
                         <div class="col-sm-3 content-name">指令文件：</div>
                         <div class="col-sm-7 content-detail">
-                            <input class="form-control  input-sm" readonly>
-                        </div>
-                        <div class="content-detail">
-                            <button class="btn btn-sm btn-default" ng-click="change()">选择文件</button>
+                            <form action="" class="dropzone" dropzone="">
+                                <div class="dz-default dz-message">
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3 content-name">指令附件：</div>
                         <div class="col-sm-7 content-detail">
-                            <input class="form-control  input-sm" readonly ng-model="data.file.name">
-                        </div>
-                        <div class="content-detail">
-                            <button class="btn btn-sm btn-default"
-                                    ngf-select ng-model="data.file" ngf-change="change()">选择文件
-                            </button>
+                            <form action="" class="dropzone" dropzone="">
+                                <div class="dz-default dz-message">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

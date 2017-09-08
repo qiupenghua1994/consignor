@@ -21,9 +21,9 @@
     color: #4E1707;
 }
 
-
 .content-border-card{
     height: 20px;
+    line-height: 20px;
     width: 160px;
     background-color: #f47d1f;
     border-radius: 20px 20px 0 0;
@@ -83,6 +83,18 @@
     top: 13px;
 }
 
+/*清除小图标&times */
+.clean-button {
+    position: absolute;
+    right: 36px;
+    top: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+    z-index: 100;
+}
+
 /*可点击的readOnly*/
 .readonly-pointer[readonly] {
     cursor: pointer;
@@ -116,4 +128,10 @@
 /*bootstrap*/
 .input-group-addon {
     padding: 6px 8px;
+    cursor: pointer;
+}
+
+/*upload*/
+.dropzone .dz-preview .dz-progress {
+    top: 100px;
 }

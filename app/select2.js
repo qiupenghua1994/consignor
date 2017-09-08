@@ -71,22 +71,39 @@
             }
 
             function initListenEvent(vm, elem) {
-                $(elem).on('select2:select', function (evt) {
+
+                var eventHandlers = {
+                    'select2:select': onSelectEvent,
+                    'select2:unselect': onUnselectEvent,
+                };
+                angular.forEach(eventHandlers, function (handler, event) {
+                    $(elem).on(event, handler);
+                });
+
+                function onSelectEvent(evt) {
                     if (evt.params.data) {
                         vm.obj = evt.params.data;
                         vm.value = evt.params.data.id;
                         vm.$apply();
-                        if (vm.onChange() && typeof vm.onChange == 'function') {
+                        if (vm.onChange && vm.onChange() && typeof vm.onChange == 'function') {
                             vm.onChange()(evt.params.data, evt)
                         }
                     }
-                });
+                }
+
+                function onUnselectEvent(evt) {
+                    vm.obj = {};
+                    vm.value = '';
+                    vm.$apply();
+                }
+
+
+
             }
         }
 
         return {
             restrict: 'AE',
-            priority: '100',
             scope: {
                 opt: '=',
                 value: '=',
@@ -100,7 +117,7 @@
 
     function gfSelectSearchDirective() {
         var temp = '<div class="gf-select2 gf-select2-sm">' +
-            '<select opt="opt" gf-select value="value" obj="obj" on-change="onChange" style="width: 100%;">' +
+            '<select opt="opt" gf-select  value="value" obj="obj" on-change="onChange" style="width: 100%;">' +
             '<option></option>' +
             '</select></div>';
 
@@ -111,7 +128,6 @@
         return {
             restrict: 'AE',
             template: temp,
-            priority: '101',
             scope: {
                 opt: '=',
                 value: '=',
@@ -163,7 +179,6 @@
         return {
             restrict: 'AE',
             template: temp,
-            priority: '101',
             scope: {
                 opt: '=',
                 value: '=',

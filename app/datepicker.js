@@ -44,7 +44,6 @@
 
                 scope.$watch('opt', function () {
                     initDatePicker();
-                    console.log(1);
                 }, true);
 
                 function initDatePicker() {
@@ -57,7 +56,7 @@
                 }
 
                 function changeDate(e) {
-                    if (scope.onChange() && typeof scope.onChange() == 'function') {
+                    if (scope.onChange && scope.onChange() && typeof scope.onChange() == 'function') {
                         scope.onChange()(e);
                     }
                 }
@@ -66,13 +65,48 @@
     }
 
     function gfDatePickerDirective() {
-        var temp = '<div class="input-group date">' +
+        var temp = '<div style="position: relative;">' +
+            '<span class="clean-button" ng-show="!opt.hideClean && value"  ng-click="clean($event)">&times</span>' +
+            '<div class="input-group date">' +
             '<input type="text" class="form-control  input-sm readonly-pointer"  ' +
             'ng-model="value" gf-date  opt="opt" elem="dateElem" on-change="onChange" readonly>' +
             '<div class="input-group-addon" ng-click="openDatePicker()">' +
             '<span class ="glyphicon glyphicon-th" ng-click="openDatePicker()"> </span> ' +
             '</div>' +
-            '</div>';
+            '</div></div>';
+
+        function gfDatePickerController($scope, $element, $attrs) {
+            initOpt();
+            $scope.openDatePicker = function () {
+                $($scope.dateElem).datepicker('show');
+            };
+
+            $scope.clean = function (e) {
+                $($scope.dateElem).datepicker('clearDates');
+            };
+
+            $scope.$watch(canChangeOpt, function () {
+            });
+            function initOpt() {
+                if (!$scope.opt) {
+                    $scope.opt = {};
+                }
+
+                canChangeOpt();
+            }
+
+            function canChangeOpt() {
+                if ($scope.startDate) {
+                    $scope.opt.startDate = $scope.startDate;
+                }
+                if ($scope.endDate) {
+                    $scope.opt.endDate = $scope.endDate;
+                }
+                if ($scope.value) {
+                    $scope.opt.defaultViewDate = $scope.value;
+                }
+            }
+        }
         return {
             restrict: 'AE',
             template: temp,
@@ -84,35 +118,7 @@
                 endDate: '=?',
 
             },
-            controller: function ($scope, $attrs) {
-
-                initOpt();
-                $scope.openDatePicker = function () {
-                    $($scope.dateElem).datepicker('show');
-                };
-
-                $scope.$watch(canChangeOpt, function () {
-                })
-                function initOpt() {
-                    if (!$scope.opt) {
-                        $scope.opt = {};
-                    }
-
-                    canChangeOpt();
-                }
-
-                function canChangeOpt() {
-                    if ($scope.startDate) {
-                        $scope.opt.startDate = $scope.startDate;
-                    }
-                    if ($scope.endDate) {
-                        $scope.opt.endDate = $scope.endDate;
-                    }
-                    if ($scope.value) {
-                        $scope.opt.defaultViewDate = $scope.value;
-                    }
-                }
-            },
+            controller: gfDatePickerController,
             link: function (scope, ele, attr) {
             }
         }

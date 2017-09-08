@@ -46,7 +46,10 @@
         ];
 
 
-        var temp = '<div style="position: relative"><p class="down-button" ng-click="open($event)"></p><input placeholder="请选择" ng-model="showText" type="text" class="form-control input-sm readonly-pointer" ' +
+        var temp = '<div style="position: relative">' +
+            '<span class="down-button" ng-click="open($event)"></span>' +
+            '<span class="clean-button"  ng-show="!opt.hideClean && value"  ng-click="clean($event)">&times</span>' +
+            '<input placeholder="请选择" ng-model="showText" type="text" class="form-control input-sm readonly-pointer" ' +
             'ng-click="open($event)" readonly/>' +
             '<ul gf-tree opt="opt" value="value" class="ztree" style="display: none"></ul></div>';
 
@@ -54,7 +57,6 @@
         function gfTreeInputController($scope, $attrs) {
 
             var setting = initSetting();
-
 
             $scope.treeIdNum = 0;
             $scope.opt = {
@@ -81,6 +83,11 @@
                     $(spanId).css('top', '13px');
                     $("body").unbind("mousedown", onBodyDown(idNum));
                 }
+            };
+            $scope.clean = function (e) {
+                $scope.obj = {};
+                $scope.value = '';
+                $scope.showText = '';
             };
 
             function reSize(elem) {
@@ -120,6 +127,9 @@
             }
 
             function initSetting() {
+                if (!$scope.opt) {
+                    $scope.opt = {};
+                }
                 var setting = {
                     callback: {
                         onClick: onClickCallBack,
@@ -129,7 +139,7 @@
                 function onClickCallBack(event, treeId, treeNode) {
                     setValue(treeNode);
                     closeTreeInput(treeId);
-                    if ($scope.onChange() && typeof $scope.onChange == 'function') {
+                    if ($scope.onChange && $scope.onChange() && typeof $scope.onChange == 'function') {
                         $scope.onChange()(treeNode, treeId, event);
                     }
                 };

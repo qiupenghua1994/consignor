@@ -6,11 +6,21 @@
     function DemoController($scope) {
 
 
+        //弹窗
+        $scope.openDialog = function () {
+            var q = App.showDialog('demo/view/dialog.html', 'DemoDialogController');
+            q.then(function (resp) {
+
+                $scope.dialogValue = resp;
+            });
+        }
+
         //上传弹窗
         $scope.openUploadDialog = function () {
             var q = App.showDialog('demo/view/upload.html', 'DemoUploadController');
-            q.then(function () {
+            q.then(function (resp) {
 
+                $scope.fileName = resp;
             });
         }
 
@@ -52,6 +62,20 @@
 
     }
 
+    function DemoDialogController($scope) {
+
+        $scope.title = '这是标题';
+        $scope.input = '';
+
+        $scope.save = function () {
+            $scope.$close($scope.input)
+        };
+
+        $scope.cancel = function () {
+            $scope.$close($scope.input)
+        };
+    }
+
     function DemoUploadController($scope) {
         //上传组件
 
@@ -66,9 +90,18 @@
         $scope.reset = function () {
             $scope.resetDropzone();
         };
+
+        $scope.cancel = function () {
+            var str = '';
+            angular.forEach($scope.files, function (item, value) {
+                str += item.name;
+            });
+            $scope.$close(angular.copy(str))
+        }
     }
 
     angular.module('demo', [])
         .controller('DemoController', DemoController)
+        .controller('DemoDialogController', DemoDialogController)
         .controller('DemoUploadController', DemoUploadController)
 }(window.angular, window.jQuery));

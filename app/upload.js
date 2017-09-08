@@ -15,7 +15,7 @@
                 addRemoveLinks: true,//显示删除按钮
                 maxFilesize: 512,
                 //maxFilesize: 100,
-                //paramName: "uploadfile",
+                //paramName: "uploadfile",//附带参数
                 //maxThumbnailFilesize: 10,
                 //parallelUploads:3,
                 //maxFiles:3,
@@ -39,8 +39,8 @@
 
             var eventHandlers = {
                 'addedfile': function (file) {
-                    console.log(file);
                     scope.file = file;
+                    scope.files = this.files;
                     if (this.files[1] != null) {
                         //this.removeFile(this.files[0]);
                     }

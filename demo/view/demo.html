@@ -28,12 +28,24 @@
         <hr/>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-3 content-name">上传：</div>
+        <div class="col-sm-3 content-name">弹窗：</div>
         <div class="col-sm-5 content-detail">
-            <input ng-model="file" class="form-control">
+            <input ng-model="dialogValue" class="form-control input-sm">
         </div>
         <div class="col-sm-2">
-            <button ng-click="openUploadDialog()">上传</button>
+            <button ng-click="openDialog()" class="btn  btn-default">打开弹窗</button>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <hr/>
+    </div>
+    <div class="col-sm-6">
+        <div class="col-sm-3 content-name">上传：</div>
+        <div class="col-sm-5 content-detail">
+            <input ng-model="fileName" class="form-control input-sm">
+        </div>
+        <div class="col-sm-2">
+            <button ng-click="openUploadDialog()" class="btn btn-default">上传</button>
         </div>
     </div>
     <div class="col-sm-12">
