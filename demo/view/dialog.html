@@ -1,11 +1,35 @@
 <form gf-form-dialog save-button="save" cancel-button="cancel">
     <div class="col-sm-12">
-        <s>save-button:保存按钮名</s>
+
+        <p>save-button:保存按钮名</p>
 
         <p>cancel-button:取消按钮名</p>
 
         <p>footer-template-url:false为不显示、footer-template-url="demo/view/upload.html"</p>
         输入点什么：<input class="form-control" ng-model="input"/>
+        <table width="100%" border="1">
+            <colgroup span="3">
+                <col span="2"/>
+                <col/>
+                <col/>
+            </colgroup>
+
+            <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td>3476896</td>
+                <td>My first HTML</td>
+                <td>$53</td>
+            </tr>
+            <tr>
+                <td>2489604</td>
+                <td>My first CSS</td>
+                <td>$47</td>
+            </tr>
+        </table>
     </div>
 
 </form>

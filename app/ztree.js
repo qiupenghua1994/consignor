@@ -143,9 +143,6 @@
                         $scope.onChange()(treeNode, treeId, event);
                     }
                 };
-
-
-
                 return setting;
             }
         }
