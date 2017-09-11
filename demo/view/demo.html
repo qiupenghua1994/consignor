@@ -16,7 +16,7 @@
         <hr/>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-3 content-name">正常输入框：</div>
+        <div class="col-sm-3 content-name"><span>正常输入正常输常输入正常输入框：</span></div>
         <div class="col-sm-7 content-detail">
             <input class="form-control input-sm" ng-model="inputValue"/>
         </div>
@@ -28,7 +28,7 @@
         <hr/>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-3 content-name">弹窗：</div>
+        <div class="col-sm-3 content-name"><span>弹窗：</span></div>
         <div class="col-sm-5 content-detail">
             <input ng-model="dialogValue" class="form-control input-sm">
         </div>
@@ -40,7 +40,7 @@
         <hr/>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-3 content-name">上传：</div>
+        <div class="col-sm-3 content-name"><span>上传：</span></div>
         <div class="col-sm-5 content-detail">
             <input ng-model="fileName" class="form-control input-sm">
         </div>
@@ -52,7 +52,7 @@
         <hr/>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-3 content-name">下拉树：</div>
+        <div class="col-sm-3 content-name"><span>下拉树：</span></div>
         <div class="col-sm-7 content-detail">
             <div gf-tree-input opt="treeOpt" value="treeId" obj="treeObj" on-change="treeOnChange"></div>
         </div>
@@ -66,12 +66,12 @@
         <hr/>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-3 content-name">字典下拉列表：</div>
+        <div class="col-sm-3 content-name"><span>字典下拉列表：</span></div>
         <div class="col-sm-7 content-detail">
             <div gf-select-dict dict="dictName" opt="selectOpt" value="selectId" obj="selectObj"
                  on-change="selectOnChane"></div>
         </div>
-        <div class="col-sm-3 content-name">模糊下拉列表：</div>
+        <div class="col-sm-3 content-name"><span>模糊下拉列表：</span></div>
         <div class="col-sm-7 content-detail">
             <div gf-select-search opt="selectOpt" value="selectId" obj="selectObj" on-change="selectOnChane"></div>
         </div>
@@ -87,7 +87,7 @@
         <hr/>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-3 content-name">单选按钮：</div>
+        <div class="col-sm-3 content-name"><span>单选按钮：</span></div>
         <div class="col-sm-7 content-detail">
             <div gf-btn-group data="checkRadioList1" value="checkRadioId" multiple="checkRadioId2"
                  obj="checkRadioObj"></div>
@@ -104,26 +104,45 @@
         <hr/>
     </div>
     <div class="col-sm-6">
-        <div class="col-sm-3 content-name">开始日期：</div>
+        <div class="col-sm-3 content-name"><span>普通日期：</span></div>
         <div class="col-sm-7 content-detail">
-            <div gf-date-picker value="datePickerStart"></div>
+            <div gf-date-picker value="datePickerDefault"></div>
         </div>
-        <div class="col-sm-3 content-name">结束日期：</div>
+        <div class="col-sm-3 content-name"><span>开始日期：</span></div>
         <div class="col-sm-7 content-detail">
-            <div gf-date-picker value="datePickerEnd"></div>
+            <div gf-date-picker value="datePickerStart" opt="opt1"></div>
         </div>
-        <div class="col-sm-3 content-name">日期：</div>
+        <div class="col-sm-3 content-name"><span>结束日期：</span></div>
+        <div class="col-sm-7 content-detail">
+            <div gf-date-picker value="datePickerEnd" opt="opt2"></div>
+        </div>
+        <div class="col-sm-3 content-name"><span>日期：</span></div>
         <div class="col-sm-7 content-detail">
             <div gf-date-picker opt="dateOpt" value="datePicker"
                  on-change="dateOnChange" start-date="datePickerStart" end-date="datePickerEnd"></div>
         </div>
     </div>
     <div class="col-sm-6">
+        配置参数 opt1: {{opt1}}<br>
+        配置参数 opt2: {{opt2}}<br>
         配置参数 opt: {{dateOpt}}<br>
         选中项Id value:{{datePicker}} <br>
     </div>
     <div class="col-sm-12">
         <hr/>
+    </div>
+    <div class="col-sm-6">
+        <div class="col-sm-3 content-name"><span>单选框：</span></div>
+        <div class="col-sm-7 content-detail">
+            <div class="content-choice">
+                <label><input value="1" type="radio" ng-model="data.type"><span>人工录入</span></label>
+                <label><input value="2" type="radio" ng-model="data.type"><span>人工录入</span></label>
+                <label><input value="3" type="radio" ng-model="data.type"><span>人工录入</span></label>
+                <label><input value="3" type="checkbox" ng-model="data.type1"><span>人工录入</span></label>
+                <label><input value="34" type="checkbox" ng-model="data.type1"><span>人工录入</span></label>
+            </div>
+
+        </div>
     </div>
 
 

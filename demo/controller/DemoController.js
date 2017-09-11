@@ -100,8 +100,77 @@
         }
     }
 
+    function DemoGridController($scope) {
+
+        var data = [
+            {
+                name: '项目1',
+                type: '类型1',
+                account: '11236545',
+                accountName: '上海交大',
+                status: '未开户',
+                time: '2007/5/5',
+                income: '100,222.00',
+                outcome: '22,222.00',
+                balance: '78,000.00'
+            },
+            {
+                name: '项目2',
+                type: '类型1',
+                account: '11236545',
+                accountName: '上海交大',
+                status: '未开户',
+                time: '2007/5/5',
+                income: '100,222.00',
+                outcome: '22,222.00',
+                balance: '78,000.00'
+            },
+
+        ];
+        $scope.grid = {
+            autoFit: true,
+            onGridReady: function () {
+                $scope.grid.api.setRowData(data);
+            },
+            columnDefs: [
+                {
+                    headerName: '交易日期',
+                    field: 'time'
+                },
+                {
+                    headerName: '对方账户',
+                    field: 'account'
+                },
+                {
+                    headerName: '对方户名',
+                    field: 'accountName'
+                },
+                {
+                    headerName: '收入',
+                    field: 'income'
+                },
+                {
+                    headerName: '支出',
+                    field: 'outcome'
+                },
+                {
+                    headerName: '余额',
+                    field: 'balance'
+                },
+                {
+                    headerName: '操作',
+                    field: 'evt'
+                }
+
+            ]
+        }
+
+
+    }
+
     angular.module('demo', [])
         .controller('DemoController', DemoController)
         .controller('DemoDialogController', DemoDialogController)
         .controller('DemoUploadController', DemoUploadController)
+        .controller('DemoGridController', DemoGridController)
 }(window.angular, window.jQuery));

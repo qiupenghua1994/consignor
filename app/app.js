@@ -39,7 +39,6 @@
     function extendAngularApi(){
         //用于指令中原生方法的脏检查,判断是否需要用脏检查方法
         angular.$apply = function (scope,fn) {
-            debugger
             if(scope.$root.$$phase){
                 if(fn){
                     fn();
@@ -276,6 +275,11 @@
                 url: '/demo',
                 templateUrl: 'demo/view/demo.html',
                 controller: 'DemoController'
+            })
+            .state('demoGrid', {
+                url: '/demoGrid',
+                templateUrl: 'demo/view/grid.html',
+                controller: 'DemoGridController'
             })
     })
 

@@ -89,7 +89,7 @@
     </div>
 
 
-<div class="col-sm-12" style="top: 58px">
+<div class="container-fluid col-sm-12" style="top: 58px">
     <div style="width: 200px;float: left;">
         <div class="panel-group" id="accordion22">
             <div class="panel panel-default">
@@ -169,7 +169,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading" data-toggle="collapse"
                      data-parent="#accordion2" href="#collapseSix">
-                    <a class="accordion-toggle" ui-sref="demo">模板</a>
+                    <a class="accordion-toggle">模板</a>
+                </div>
+                <div id="collapseSix" class="panel-collapse collapse"
+                     style="height: 0px;">
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a ui-sref="demo">基础</a></li>
+                            <li><a ui-sref="demoGrid">grid</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

@@ -41,17 +41,22 @@
             link: function (scope, ele, attr) {
 
                 var opt;
-
-                scope.$watch('opt', function () {
-                    initDatePicker();
+                initDatePicker();
+                scope.$watch('opt', function (a, b, d) {
+                    if (a.startDate || a.endDate) {
+                        if (scope.opt.textValue < scope.opt.startDate || scope.opt.textValue > scope.opt.endDate) {
+                            $(ele).datepicker('clearDates');
+                        }
+                    }
                 }, true);
 
                 function initDatePicker() {
                     opt = angular.extend(defaultOpt, scope.opt);
                     $(ele).datepicker('destroy');
                     var a = $(ele).datepicker(opt);
-                    $(ele).datepicker('update', scope.opt.defaultViewDate);
+                    $(ele).datepicker('update', scope.opt.textValue);
                     $(ele).datepicker().on('changeDate', changeDate);
+                    $(ele).datepicker().on('show', showDate);
                     scope.elem = ele;
                 }
 
@@ -59,6 +64,11 @@
                     if (scope.onChange && scope.onChange() && typeof scope.onChange() == 'function') {
                         scope.onChange()(e);
                     }
+                }
+
+                function showDate(e) {
+                    $(ele).datepicker('setStartDate', scope.opt.startDate);
+                    $(ele).datepicker('setEndDate', scope.opt.endDate);
                 }
             }
         }
@@ -83,6 +93,7 @@
 
             $scope.clean = function (e) {
                 $($scope.dateElem).datepicker('clearDates');
+                $scope.opt.textValue = '';
             };
 
             $scope.$watch(canChangeOpt, function () {
@@ -91,7 +102,9 @@
                 if (!$scope.opt) {
                     $scope.opt = {};
                 }
-
+                if ($scope.value) {
+                    $scope.opt.defaultViewDate = $scope.value;
+                }
                 canChangeOpt();
             }
 
@@ -103,7 +116,7 @@
                     $scope.opt.endDate = $scope.endDate;
                 }
                 if ($scope.value) {
-                    $scope.opt.defaultViewDate = $scope.value;
+                    $scope.opt.textValue = $scope.value;
                 }
             }
         }
