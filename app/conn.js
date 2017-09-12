@@ -6,7 +6,7 @@
 
     function connProvider(){
         var _basePath = '/default/';
-        var _suffix = '.rest';
+        var _suffix = '';//'.rest';
         var _debug = true;
         var _provider = this;
 
