@@ -1,4 +1,14 @@
 /*基本表单*/
+
+/*页面基础*/
+.content-tab {
+    padding: 0px;
+}
+
+.content-form {
+
+}
+
 .content-name {
     min-height: 30px;
     text-align: right;
@@ -25,6 +35,7 @@
     border: 2px solid #ddd;
     padding: 5px;
     margin:0 3px 3px 0 ;
+    box-shadow: 3px 3px 5px #dddddd;
 }
 
 /*选择框*/
@@ -43,9 +54,6 @@
     margin: 0;
 }
 
-#accordion22 a{
-    color: #4E1707;
-}
 
 .content-border-card{
     height: 20px;
@@ -77,22 +85,23 @@
     text-align: center;
 }
 
-.grid {
-    padding: 5px;
+.content-grid {
+    /*padding: 5px;*/
 }
 
-.grid .grid-msg {
+.content-grid .grid-msg {
     height: 30px;
     padding: 1px;
     margin-top: 3px;
 }
-.grid .grid-msg button {
+
+.content-grid .grid-msg button {
     float: right;
     padding: 3px;
-    margin: 2px 1px;
+    margin: 0 1px;
 }
 
-.grid .grid-msg span {
+.content-grid .grid-msg span {
     line-height: 30px;
 }
 
@@ -104,6 +113,11 @@
 .btn-default.active {
     border-color: orange;
     color: orange;
+}
+
+/*菜单*/
+#accordion22 a {
+    color: #4E1707;
 }
 
 /*下拉小图标*/
@@ -164,6 +178,10 @@
 .input-group-addon {
     padding: 6px 8px;
     cursor: pointer;
+}
+
+.form-control {
+    height: 30px;
 }
 
 /*upload*/

@@ -2,9 +2,9 @@
 
     <div style="float: right;color: red;"><span class="glyphicon glyphicon-star"></span>收藏该资金信息</div>
     <div class="row" style="margin-top: 5px;">
-        <div class="col-sm-2 content-name">账户信息：</div>
-        <div class="col-sm-4 content-detail select-sm">
-            <select class="form-control input-sm" gf-select opt="selectOpt"></select>
+        <div class="col-sm-2 content-name"><span>账户信息：</span></div>
+        <div class="col-sm-4 content-detail">
+            <div gf-select-dict dict="dictName" opt="selectOpt" value="selectId"></div>
         </div>
     </div>
     <div class="row">
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2 content-name">交易日期：</div>
+        <div class="col-sm-2 content-name"><span>交易日期：</span></div>
         <div class="col-sm-4 content-detail">
             <div gf-date-picker opt="dateOpt" value="data.start"></div>
         </div>
@@ -28,7 +28,7 @@
 
     </div>
     <div class="row">
-        <div class="col-sm-2 content-name">金额区间：</div>
+        <div class="col-sm-2 content-name"><span>金额区间：</span></div>
         <div class="col-sm-4 content-detail">
             <div class="input-group">
                 <span class="input-group-addon">￥</span>
@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2 content-name">收支方向：</div>
+        <div class="col-sm-2 content-name"><span>收支方向：</span></div>
         <div class="col-sm-4 content-detail">
             <div gf-btn-group data="directionList" ng-model="direction" role="group"></div>
         </div>
@@ -52,8 +52,8 @@
         <button type="button" class="btn btn-sm btn-warning">查询</button>
         <button type="button" class="btn btn-sm btn-default">重置</button>
     </div>
-    <div class="col-sm-12 grid">
-        <div class="row grid-msg">
+    <div class="col-sm-12 content-grid">
+        <div class="grid-msg">
             <span>收入(总额)：8888888 &nbsp; &nbsp; &nbsp;支出(总额)：88888</span>
 
 
@@ -63,6 +63,6 @@
             <button type="button" class="btn btn-sm btn-default">凭证导出</button>
 
         </div>
-        <div class="row" gf-grid="grid"></div>
+        <div gf-grid="grid"></div>
     </div>
 </div>

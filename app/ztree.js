@@ -4,7 +4,7 @@
 
 (function (angular, $) {
 
-    function gftreeDirective() {
+    function gftreeInitDirective() {
 
         var treeId = 0;
         return {
@@ -13,7 +13,7 @@
                 opt: '=',
                 value: '=',
             },
-            controller: function ($scope, $attrs) {
+            controller: function ($scope, $element, $attrs) {
 
             },
             link: function (scope, ele, attr) {
@@ -23,6 +23,23 @@
                 var zNodes = scope.opt.zNodes;
                 var zTreeObj = $.fn.zTree.init($(ele), setting, zNodes);
             }
+        }
+    }
+
+    function gftreeDirective() {
+
+        var temp = '<div><ul gf-tree opt="opt" ng-model="value" class="ztree" ></ul></div>'
+
+
+        return {
+            restrict: 'A',
+            template: temp,
+            scope: {
+                opt: '=',
+                value: '=',
+                obj: '=?',
+                onChange: '&?'
+            },
         }
     }
 
@@ -51,7 +68,7 @@
             '<span class="clean-button"  ng-show="!opt.hideClean && value"  ng-click="clean($event)">&times</span>' +
             '<input placeholder="请选择" ng-model="showText" type="text" class="form-control input-sm readonly-pointer" ' +
             'ng-click="open($event)" readonly/>' +
-            '<ul gf-tree opt="opt" value="value" class="ztree" style="display: none"></ul></div>';
+            '<ul gf-tree-init opt="opt" value="value" class="ztree" style="display: none"></ul></div>';
 
 
         function gfTreeInputController($scope, $attrs) {
@@ -168,6 +185,7 @@
 
 
     angular.module('myDirective')
+        .directive('gfTreeInit', gftreeInitDirective)
         .directive('gfTree', gftreeDirective)
         .directive('gfTreeInput', gftreeInputDirective)
 

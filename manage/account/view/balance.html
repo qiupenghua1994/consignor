@@ -2,7 +2,7 @@
 
     <div style="float: right;color: red;"><span class="glyphicon glyphicon-star"></span>收藏该资金信息</div>
     <div class="row" style="margin-top: 5px;">
-        <div class="col-sm-2 content-name">账户信息：</div>
+        <div class="col-sm-2 content-name"><span>账户信息：</span></div>
         <div class="col-sm-4 content-detail select-sm">
             <select class="form-control input-sm" gf-select opt="selectOpt">
                 <option></option>
@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-2 content-name">交易日期：</div>
+        <div class="col-sm-2 content-name"><span>交易日期：</span></div>
         <div class="col-sm-4 content-detail">
             <input class="form-control  input-sm" ng-model="data.start" type="date">
         </div>
@@ -33,14 +33,11 @@
         <button type="button" class="btn btn-sm btn-warning">查询</button>
         <button type="button" class="btn btn-sm btn-default">重置</button>
     </div>
-    <div class="col-sm-12 grid">
-        <div class="row grid-msg">
-
-
+    <div class="col-sm-12 content-grid">
+        <div class="grid-msg">
             <button type="button" class="btn btn-sm btn-default">历史余额打印</button>
             <button type="button" class="btn btn-sm btn-default">历史余额导出</button>
-
         </div>
-        <div class="row" gf-grid="grid"></div>
+        <div gf-grid="grid"></div>
     </div>
 </div>

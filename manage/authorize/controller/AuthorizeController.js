@@ -5,39 +5,24 @@
 
     function AuthorizeController($scope) {
 
-        $scope.data = {
-            type: 1
-        };
-
-        var data = [
-            {name: '项目1', type: '类型1', status: '未开户', time: '2007/5/5'},
-            {name: '项目2', type: '类型2', status: '已开户', time: '2007/5/5'}
-        ]
-        $scope.grid = {
-            onGridReady: function () {
-                $scope.grid.api.setRowData(data);
-            },
-            columnDefs: [
-                {
-                    headerName: '项目名称',
-                    field: 'name'
-                },
-                {
-                    headerName: '项目类型',
-                    field: 'type'
-                },
-                {
-                    headerName: '项目状态',
-                    field: 'status'
-                },
-                {
-                    headerName: '项目成立日期',
-                    field: 'time'
-                }
-
-            ]
+        $scope.treeOpt = {
+            "setting": {"callback": {}},
+            "zNodes": [{
+                "name": "test1",
+                "id": 1,
+                "open": true,
+                "children": [{"name": "test1_1", "id": 2}, {
+                    "name": "test1_2",
+                    "id": 3,
+                    "children": [{"name": "test1_1", "id": 4}, {"name": "test1_2", "id": 5}]
+                }]
+            }, {
+                "name": "test2",
+                "id": 6,
+                "open": true,
+                "children": [{"name": "test2_1", "id": 7}, {"name": "test2_2", "id": 8}]
+            }]
         }
-
 
     }
 

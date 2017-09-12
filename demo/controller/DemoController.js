@@ -5,7 +5,6 @@
 
     function DemoController($scope) {
 
-
         //弹窗
         $scope.openDialog = function () {
             var q = App.showDialog('demo/view/dialog.html', 'DemoDialogController');
