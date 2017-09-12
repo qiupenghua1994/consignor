@@ -21,12 +21,15 @@
 
                 $scope.fileName = resp;
             });
-        }
+        };
 
         //树
         $scope.treeOnChange = function (treeNode, treeId, event) {
             console.log(treeNode);
         };
+        $scope.treeOpt = {
+            url: 'json/tree.json',
+        }
 
         //下拉列表
         $scope.selectOpt = {

@@ -2,7 +2,7 @@
 
 /*页面基础*/
 .content-tab {
-    padding: 0px;
+    /*padding: 0px;*/
 }
 
 .content-form {
@@ -69,6 +69,7 @@
 
 .content-border-card-100w {
     height: 20px;
+    line-height: 20px;
     width: 100%;
     background-color: #f47d1f;
     border-radius: 20px 20px 0 0;
@@ -87,6 +88,7 @@
 
 .content-grid {
     /*padding: 5px;*/
+    margin: 15px 0 5px;
 }
 
 .content-grid .grid-msg {

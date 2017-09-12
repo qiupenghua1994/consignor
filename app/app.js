@@ -254,7 +254,7 @@
             .state('project_list', {
                 url: '/project_list',
                 templateUrl: 'manage/project/view/main.html',
-                controller: 'AuthorizeController'
+                controller: 'AccountDetailController'
             })
             .state('account_query', {
                 url: '/account_query',

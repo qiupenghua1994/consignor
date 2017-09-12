@@ -11,24 +11,100 @@
             restrict: 'AE',
             scope: {
                 opt: '=',
+                obj: '=',
                 value: '=',
+                onChange: '&?'
             },
-            controller: function ($scope, $element, $attrs) {
+            controller: function ($scope, $element, $attrs, $conn, $q) {
+                $scope.setting = initSetting();
+                $scope.zNodesPromse = initNodes();
 
+
+                function initSetting() {
+
+                    var setting = {
+                        callback: {
+                            onClick: onClickCallBack,
+                        }
+                    };
+
+                    function onClickCallBack(event, treeId, treeNode) {
+                        setValue(treeNode);
+                        if ($scope.onChange && $scope.onChange() && typeof $scope.onChange == 'function') {
+                            $scope.onChange()(treeNode, treeId, event);
+                        }
+                    };
+                    return setting;
+                }
+
+                function initNodes() {
+                    var nodeDefer = $q.defer();
+                    if ($scope.opt) {
+                        var opt = $scope.opt;
+                        if (opt.url) {
+                            var q = $conn.bizGet(opt.url);
+                            q.then(function (resp) {
+
+                                var arr = getRoot(resp.data, 0, 'parentId', 'id');
+
+                                function getRoot(data, val, parentName, idName) {
+                                    var arr = [];
+                                    for (var i in data) {
+                                        if (data[i][parentName] === val) {
+                                            arr.push(nodeData(data, data[i][idName], parentName, idName, data[i]));
+                                        }
+                                    }
+                                    return arr;
+                                }
+
+                                function nodeData(data, val, parentName, idName, arr) {
+                                    arr.children = [];
+                                    for (var i in data) {
+                                        if (data[i][parentName] == val) {
+                                            var a = nodeData(data, data[i][idName], 'parentName', 'idName', data[i]);
+                                            arr.children.push(a);
+                                        }
+                                    }
+                                    if (!arr.children.length) {
+                                        delete arr.children;
+                                    }
+                                    return arr;
+                                }
+
+                                nodeDefer.resolve(arr);
+                            })
+                        }
+                    }
+                    return nodeDefer.promise;
+                }
+
+                function setValue(treeNode) {
+                    if (!treeNode) {
+                        console.warn('树节点错误！');
+                        return;
+                    }
+                    $scope.$apply(function () {
+                        $scope.value = treeNode.id;
+                        $scope.obj = treeNode;
+                    });
+                }
             },
             link: function (scope, ele, attr) {
-                ele.siblings().attr('id', 'input_tree' + (treeId));
-                ele.attr('id', '_tree' + (treeId++));
-                var setting = scope.opt.setting;
-                var zNodes = scope.opt.zNodes;
-                var zTreeObj = $.fn.zTree.init($(ele), setting, zNodes);
+
+                scope.zNodesPromse.then(function (zNodes) {
+                    ele.siblings().attr('id', 'input_tree' + (treeId));
+                    ele.attr('id', '_tree' + (treeId++));
+                    var setting = scope.setting;
+                    var zTreeObj = $.fn.zTree.init($(ele), setting, zNodes);
+                })
+
             }
         }
     }
 
     function gftreeDirective() {
 
-        var temp = '<div><ul gf-tree opt="opt" ng-model="value" class="ztree" ></ul></div>'
+        var temp = '<ul gf-tree-init opt="opt" obj="obj" ng-model="value" class="ztree" ></ul>'
 
 
         return {
@@ -40,6 +116,12 @@
                 obj: '=?',
                 onChange: '&?'
             },
+            controller: function () {
+
+            },
+            link: function () {
+
+            }
         }
     }
 
@@ -48,38 +130,27 @@
 
 
         // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
-        var zNodes = [
-            {
-                name: "test1", id: 1, open: true, children: [
-                {name: "test1_1", id: 2}, {
-                    name: "test1_2", id: 3, children: [
-                        {name: "test1_1", id: 4}, {name: "test1_2", id: 5}]
-                }]
-            },
-            {
-                name: "test2", id: 6, open: true, children: [
-                {name: "test2_1", id: 7}, {name: "test2_2", id: 8}]
-            }
-        ];
-
 
         var temp = '<div style="position: relative">' +
             '<span class="down-button" ng-click="open($event)"></span>' +
             '<span class="clean-button"  ng-show="!opt.hideClean && value"  ng-click="clean($event)">&times</span>' +
-            '<input placeholder="请选择" ng-model="showText" type="text" class="form-control input-sm readonly-pointer" ' +
+            '<input placeholder="请选择" ng-model="obj.name" type="text" class="form-control input-sm readonly-pointer" ' +
             'ng-click="open($event)" readonly/>' +
-            '<ul gf-tree-init opt="opt" value="value" class="ztree" style="display: none"></ul></div>';
+            '<ul gf-tree-init opt="opt" value="value" obj="obj" on-change="onTreeChange" class="ztree" style="display: none"></ul></div>';
 
 
         function gfTreeInputController($scope, $attrs) {
 
-            var setting = initSetting();
+
+            $scope.onTreeChange = function (treeNode, treeId, event) {
+                closeTreeInput(treeId);
+                if ($scope.onChange && $scope.onChange() && typeof $scope.onChange == 'function') {
+                    $scope.onChange()(treeNode, treeId, event);
+                }
+            };
 
             $scope.treeIdNum = 0;
-            $scope.opt = {
-                setting: setting,
-                zNodes: zNodes,
-            };
+
             $scope.open = function (e) {
                 var ele = angular.element(e.target);
                 var idNum = e.target.id.match(/_tree\d+/i);
@@ -104,7 +175,6 @@
             $scope.clean = function (e) {
                 $scope.obj = {};
                 $scope.value = '';
-                $scope.showText = '';
             };
 
             function reSize(elem) {
@@ -131,37 +201,6 @@
                 $("body").unbind("mousedown", onBodyDown(treeId));
             }
 
-            function setValue(treeNode) {
-                if (!treeNode) {
-                    console.warn('树节点错误！');
-                    return;
-                }
-                $scope.$apply(function () {
-                    $scope.value = treeNode.id;
-                    $scope.showText = treeNode.name;
-                    $scope.obj = treeNode;
-                });
-            }
-
-            function initSetting() {
-                if (!$scope.opt) {
-                    $scope.opt = {};
-                }
-                var setting = {
-                    callback: {
-                        onClick: onClickCallBack,
-                    }
-                };
-
-                function onClickCallBack(event, treeId, treeNode) {
-                    setValue(treeNode);
-                    closeTreeInput(treeId);
-                    if ($scope.onChange && $scope.onChange() && typeof $scope.onChange == 'function') {
-                        $scope.onChange()(treeNode, treeId, event);
-                    }
-                };
-                return setting;
-            }
         }
 
 

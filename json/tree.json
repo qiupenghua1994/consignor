@@ -1,0 +1,48 @@
+[
+  {
+    "name": "tree1",
+    "open": true,
+    "id": 1,
+    "parentId": 0
+  },
+  {
+    "name": "tree1",
+    "id": 11,
+    "parentId": 1
+  },
+  {
+    "name": "tree1",
+    "id": 12,
+    "parentId": 1
+  },
+  {
+    "name": "tree1",
+    "id": 124,
+    "parentId": 12
+  },
+  {
+    "name": "tree2",
+    "id": 2,
+    "parentId": 0
+  },
+  {
+    "name": "tree1",
+    "id": 22,
+    "parentId": 2
+  },
+  {
+    "name": "tree1",
+    "id": 23,
+    "parentId": 2
+  },
+  {
+    "name": "tree1",
+    "id": 24,
+    "parentId": 2
+  },
+  {
+    "name": "tree1",
+    "id": 3,
+    "parentId": 0
+  }
+]
